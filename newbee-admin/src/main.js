@@ -1,9 +1,17 @@
 import { createApp } from 'vue'
-import './style.css'
 import App from './App.vue'
+import { ElButton } from 'element-plus'
 import router from '@/router'
 
-const app = createApp(App)
-app.use(router)
-app.mount('#app')
+import 'element-plus/dist/index.css'
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
+const app = createApp(App)
+for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+    app.component(key, component)
+   }
+app.use(router)
+
+app.use(ElButton)
+
+app.mount('#app')
